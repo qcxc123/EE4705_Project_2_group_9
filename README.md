@@ -4,7 +4,7 @@ This repository contains the source code for two general knowledge education dia
 The RetGen model is a knowledge-grounded conversational model jointly trained on multi-turn dialogue and document retrieval.
 The Rasa model is a task-oriented model which generates multiple-choice questions for a variety of subjects, accepts a number as an answer, and keeps track of score.
 It also provides an explanation for the answer when available (for the science dataset).
-The RetGen folder was cloned from the RetGen repository and modified. There is no need to clone the Rasa repository as it can be installed as a package.
+The RetGen folder was forked from the RetGen repository and modified. There is no need to clone/fork the Rasa repository as it can be installed as a package.
 
 ## Environment
 To run both models successfully, set up a virtual environment.
