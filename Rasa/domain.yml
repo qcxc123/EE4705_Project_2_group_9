@@ -1,0 +1,105 @@
+version: '3.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- answer_question
+- choose_subject
+- quit
+- deny
+- greet
+- ask_score
+- goodbye
+- ask_subjects
+- affirm
+- science_quiz
+- skip
+entities:
+- quiz subject
+- user answer
+slots:
+  quiz_subject:
+    type: categorical
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: quiz subject
+      intent: choose_subject
+    values:
+    - science
+    - economics
+    - government
+    - history_euro
+    - history_us
+    - history_world
+    - marketing
+    - psychology
+  question_number:
+    type: float
+    influence_conversation: false
+    mappings:
+    - type: custom
+    max_value: 1.0
+    min_value: 0.0
+  corr_ans:
+    type: float
+    influence_conversation: false
+    mappings:
+    - type: custom
+    max_value: 1.0
+    min_value: 0.0
+  user_ans:
+    type: categorical
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: user answer
+      intent: answer_question
+    values:
+    - '1'
+    - '2'
+    - '3'
+    - '4'
+    - '5'
+  user_score:
+    type: float
+    initial_value: 0
+    influence_conversation: false
+    mappings:
+    - type: custom
+    max_value: 1.0
+    min_value: 0.0
+  max_score:
+    type: float
+    initial_value: 0
+    influence_conversation: false
+    mappings:
+    - type: custom
+    max_value: 1.0
+    min_value: 0.0
+responses:
+  utter_greet:
+  - text: 'Hello! What subject would you like to be quizzed on today? The available subjects are: science, economics, government, history_Euro, history_US, history_World, marketing, and psychology.'
+  utter_subjects:
+  - text: 'The available subjects are: science, economics, government, history_Euro, history_US, history_world, marketing, and psychology.'
+  utter_another_question:
+  - text: Would you like another question from this subject?
+  utter_another_subject:
+  - text: What subject would you like to be quizzed on now?
+  utter_goodbye:
+  - text: Hope you've learnt some things today. Bye!
+actions:
+- action_ask_question
+- action_check_answer
+- action_check_score
+- action_quit_subject
+- action_reset_slots
+- utter_another_question
+- utter_another_subject
+- utter_goodbye
+- utter_greet
+- utter_subjects
+forms:
+  user_answer_form:
+    required_slots:
+    - user_ans

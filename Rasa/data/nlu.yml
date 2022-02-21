@@ -1,0 +1,201 @@
+version: "3.0"
+nlu:
+- intent: ask_subjects
+  examples: |
+    - what subjects?
+    - what subjects do you have?
+    - what subjects are there?
+    - what quiz subjects are there?
+    - what topics do you have?
+    - what topics are there?
+    - available subjects?
+    - available topics?
+    - what are the available subjects?
+    - what are the available topics?
+    - what are the subjects again?
+
+- intent: choose_subject
+  examples: |
+    - [science](quiz subject)
+    - [science](quiz subject) quiz
+    - I want to try [science](quiz subject)
+    - I want to be quizzed on [science](quiz subject)
+    - I want [science](quiz subject)
+    - how about [science](quiz subject)
+    - some [science](quiz subject)
+    - let's try [science](quiz subject)
+    - I'll try [science](quiz subject)
+    - try [science](quiz subject)
+    - [economics](quiz subject)
+    - [government](quiz subject) quiz
+    - I want to try [history_Euro](quiz subject)
+    - I want to be quizzed on [history_US](quiz subject)
+    - I want [history_World](quiz subject)
+    - how about [marketing](quiz subject)
+    - some [psychology](quiz subject)
+    - let's try [economics](quiz subject)
+    - I'll try [government](quiz subject)
+    - try [history_Euro](quiz subject)
+    - [science](quiz subject)
+    - let's try [government](quiz subject)
+
+- intent: answer_question
+  examples: |
+    - [1](user answer)
+    - [2](user answer)
+    - [3](user answer)
+    - [4](user answer)
+    - the answer is [1](user answer)
+    - the answer is [2](user answer)
+    - the answer is [3](user answer)
+    - the answer is [4](user answer)
+    - my answer is [1](user answer)
+    - my answer is [2](user answer)
+    - my answer is [3](user answer)
+    - my answer is [4](user answer)
+    - [2](user answer)
+    - my answer is [4](user answer)
+
+- intent: ask_score
+  examples: |
+    - what's my score
+    - what is my score
+    - what is my current score
+    - how many questions have I gotten right
+    - how have I done
+    - how have I done so far
+    - how many marks do I have
+    - what's my progress
+    - how's my progress
+    - what's my grade
+    - have I done well
+    - am I doing well
+    - am I doing ok
+    - what's my score?
+    - what's my score now
+
+- intent: skip
+  examples: |
+    - skip
+    - skip question
+    - skip this question
+    - next question
+    - next question please
+    - move on to the next question
+    - not this question
+
+- intent: quit
+  examples: |
+    - stop
+    - quit
+    - change subject
+    - change a subject
+    - change a topic
+    - let's change subjects
+    - let's switch subjects
+    - stop quiz
+    - stop quizzing
+    - stop quizzing on this subject
+    - stop quizzing on this topic
+    - not this subject anymore
+    - I don't want this subject anymore
+    - I don't want science anymore
+    - no more science
+    - no more questions
+    - stop asking questions
+    - let's try a different subject
+    - try another subject
+    - try a different subject
+
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - yep
+    - yeah
+    - alright
+    - that's right
+    - okay
+    - ok
+    - ok la
+    - ok lah
+    - ok lor
+    - great
+    - perfect
+    - sounds good
+    - sounds great
+    - fine
+    - I think so
+    - mm
+    - mmhmm
+    - hehe yes
+    - uh huh
+    - sure
+    - for sure
+    - das right
+    - you're right
+    - can
+    - can lah
+    - can la
+    - can lor
+    - orh
+    - anything
+    - why not
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - nope
+    - not true
+    - no thanks
+    - nah
+    - don't want
+    - I don't want
+    - no want
+    - I'd rather not say
+    - never mind
+    - no I don't
+    - no, I just don't
+    - I don't know
+    - I dunno
+    - not sure
+    - I'm not sure

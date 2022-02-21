@@ -1,0 +1,133 @@
+version: "3.0"
+
+stories:
+
+- story: quiz
+  steps:
+  - intent: choose_subject
+  - or:
+    - slot_was_set:
+      - quiz_subject: science
+    - slot_was_set:
+        - quiz_subject: economics
+    - slot_was_set:
+        - quiz_subject: government
+    - slot_was_set:
+        - quiz_subject: history_Euro
+    - slot_was_set:
+        - quiz_subject: history_US
+    - slot_was_set:
+        - quiz_subject: history_world
+    - slot_was_set:
+        - quiz_subject: marketing
+    - slot_was_set:
+        - quiz_subject: psychology
+  - action: action_ask_question
+  - action: user_answer_form
+  - active_loop: user_answer_form
+
+- story: user wants another question
+  steps:
+  - action: utter_another_question
+  - intent: affirm
+  - action: action_ask_question
+  - action: user_answer_form
+  - active_loop: user_answer_form
+
+- story: user does not want another question
+  steps:
+  - action: utter_another_question
+  - or:
+    - intent: deny
+    - intent: quit
+  - action: action_quit_subject
+  - action: utter_another_subject
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: choose_subject
+    entities:
+    - quiz subject: science
+  - slot_was_set:
+    - quiz_subject: science
+  - action: action_ask_question
+  - slot_was_set:
+    - question_number: 10492
+  - slot_was_set:
+    - corr_ans: 2
+  - action: user_answer_form
+  - active_loop: user_answer_form
+  - slot_was_set:
+    - requested_slot: user_ans
+  - slot_was_set:
+    - user_ans: '2'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_check_answer
+  - slot_was_set:
+    - user_ans: null
+  - slot_was_set:
+    - user_score: 1
+  - slot_was_set:
+    - max_score: 1
+  - action: utter_another_question
+  - intent: affirm
+  - action: action_ask_question
+  - slot_was_set:
+    - question_number: 702
+  - slot_was_set:
+    - corr_ans: 4
+  - action: user_answer_form
+  - active_loop: user_answer_form
+  - slot_was_set:
+    - requested_slot: user_ans
+  - intent: ask_score
+  - action: action_check_score
+  - action: user_answer_form
+  - slot_was_set:
+    - requested_slot: user_ans
+  - slot_was_set:
+    - user_ans: '4'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_check_answer
+  - slot_was_set:
+    - user_ans: null
+  - slot_was_set:
+    - user_score: 2
+  - slot_was_set:
+    - max_score: 2
+  - action: utter_another_question
+  - intent: deny
+  - action: action_quit_subject
+  - action: utter_another_subject
+  - intent: ask_subjects
+  - action: utter_subjects
+  - intent: choose_subject
+    entities:
+    - quiz subject: government
+  - slot_was_set:
+    - quiz_subject: government
+  - action: action_ask_question
+  - slot_was_set:
+    - question_number: 315
+  - slot_was_set:
+    - corr_ans: 2
+  - action: user_answer_form
+  - active_loop: user_answer_form
+  - slot_was_set:
+    - requested_slot: user_ans
+  - intent: quit
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_quit_subject
+  - action: utter_another_subject
+  - intent: goodbye
+  - action: utter_goodbye
+  - action: action_reset_slots
