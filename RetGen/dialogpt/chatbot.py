@@ -196,13 +196,13 @@ if __name__ == '__main__':
     #########################################################################
     # Download Model
     #########################################################################
-    logger.info('Downloading models...')
-    download_model = partial(download_model_folder, DATA_FOLDER=MODEL_FOLDER)
-
-    # model size:  could be one of 'small' (GPT2 with 117M), 'medium'(345M) or 'large' (1542M)
-    # dataset: one of 'multiref' or 'dstc'
-    # from_scratch: True : load model trained from scratch or False: load model trained from fine-tuning the GPT-2
-    target_folder = download_model(model_size='medium', dataset='multiref', from_scratch=False)
-    logger.info('Done!\n')
+    # logger.info('Downloading models...')
+    # download_model = partial(download_model_folder, DATA_FOLDER=MODEL_FOLDER)
+    #
+    # # model size:  could be one of 'small' (GPT2 with 117M), 'medium'(345M) or 'large' (1542M)
+    # # dataset: one of 'multiref' or 'dstc'
+    # # from_scratch: True : load model trained from scratch or False: load model trained from fine-tuning the GPT-2
+    # target_folder = download_model(model_size='medium', dataset='multiref', from_scratch=False)
+    # logger.info('Done!\n')
 
     run_model()
