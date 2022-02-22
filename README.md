@@ -13,7 +13,7 @@ To run both models successfully, set up a virtual environment.
 2. Create a new Pycharm project, and set the base interpreter to Python 3.8
 3. Clone this repository into the project folder via
 ```bash
-git clone https://github.com/
+git clone https://github.com/qcxc123/EE4705_Project_2_group_9
 ```
 
 4. Install the necessary packages via:
