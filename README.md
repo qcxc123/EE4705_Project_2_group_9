@@ -1,6 +1,6 @@
-# EE4705 Project 2 Group 9
+# EE4705 Project 2 Group 9: General Knowledge Education Dialogue Models
 
-This repository contains the source code for two general knowledge education dialogue models created using [RetGen](https://github.com/dreasysnail/RetGen) and [Rasa](https://github.com/RasaHQ/rasa). They can be interacted with individually or jointly.
+This repository was created for a module on Human-Robot Interaction. It contains the source code for two general knowledge education dialogue models created using [RetGen](https://github.com/dreasysnail/RetGen) and [Rasa](https://github.com/RasaHQ/rasa). They can be interacted with individually or jointly.
 The RetGen model is a knowledge-grounded conversational model jointly trained on multi-turn dialogue and document retrieval.
 The Rasa model is a task-oriented model which generates multiple-choice questions for a variety of subjects, accepts a number as an answer, and keeps track of score.
 It also provides an explanation for the answer when available (for the science dataset).
@@ -28,7 +28,7 @@ The trained models for RetGen can be downloaded from here (to be added). Place t
 ### Rasa
 The trained model for Rasa can be found in Rasa/models.
 
-### Chat with models
+## Chat with models
 ### Joint RetGen and Rasa
 To chat with the two models jointly, open 3 terminals.
 In terminal 1:
