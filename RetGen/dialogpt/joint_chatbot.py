@@ -79,7 +79,7 @@ def run_model():
             chat_mode = True
             print('Switched to chat mode')
             continue
-        elif raw_text == 'stop chat':
+        elif raw_text == 'quiz mode':
             chat_mode = False
             print('Switched to quiz mode')
             continue
@@ -109,7 +109,8 @@ def run_model():
             r = requests.post('http://localhost:5005/webhooks/rest/webhook', json={"message": raw_text})
             for i in r.json():
                 bot_message = i['text']
-                print("SYS >>> ",bot_message)
+                print("SYS >>> ", bot_message)
+
 
 if __name__ == '__main__':
     PYTHON_EXE = 'python'
