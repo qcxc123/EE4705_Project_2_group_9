@@ -1,6 +1,6 @@
 # EE4705 Project 2 Group 9
 
-This repository contains the source code for two general knowledge education dialogue models created using [RetGen](https://github.com/dreasysnail/RetGen) and [Rasa](https://github.com/RasaHQ/rasa).
+This repository contains the source code for two general knowledge education dialogue models created using [RetGen](https://github.com/dreasysnail/RetGen) and [Rasa](https://github.com/RasaHQ/rasa). They can be interacted with individually or jointly.
 The RetGen model is a knowledge-grounded conversational model jointly trained on multi-turn dialogue and document retrieval.
 The Rasa model is a task-oriented model which generates multiple-choice questions for a variety of subjects, accepts a number as an answer, and keeps track of score.
 It also provides an explanation for the answer when available (for the science dataset).
@@ -29,13 +29,29 @@ The trained models for RetGen can be downloaded from here (to be added). Place t
 The trained model for Rasa can be found in Rasa/models.
 
 ### Chat with models
-### RetGen
+### Joint RetGen and Rasa
+To chat with the two models jointly, open 3 terminals.
+In terminal 1:
+```bash
+rasa run actions
+```
+In terminal 2:
+```bash
+rasa run --enable-api
+```
+In terminal 3:
+```bash
+python joint_chatbot.py --model_name_or_path "./models/RetGen/" --load_checkpoint "./models/RetGen/reddit_generator.pkl" --max_history -2 --top_k 500 --generation_length 30
+```
+These commands will deploy the rasa chatbot and action servers on local endpoints as indicated in Rasa/endpoints.yml, and run the RetGen model in Python. You may chat with the models jointly in terminal 3. The default model is Rasa. Type "chat mode" to switch to RetGen, and "quiz mode" to switch back to Rasa.
+
+### RetGen only
 To chat with the RetGen model, use the chatbot.py script which was adapted from [DialoGPT2-Interact](https://github.com/andreamad8/DialoGPT2-Interact).
 ```bash
 cd RetGen/dialogpt
 python chatbot.py --model_name_or_path "./models/RetGen/" --load_checkpoint "./models/RetGen/reddit_generator.pkl" --generation_length 30 --max_history -2 --top_k 1
 ```
-### Rasa
+### Rasa only
 To chat with the Rasa model, open two terminals.
 In terminal 1:
 ```bash
@@ -45,8 +61,7 @@ In terminal 2:
 ```bash
 rasa shell
 ```
-These commands will deploy the rasa chatbot and action servers on local endpoints as indicated in Rasa/endpoints.yml.
-You may then chat with the Rasa model in terminal 1.
+You may then chat with the Rasa model in terminal 2.
 
 ## Datasets
 ### RetGen
@@ -61,7 +76,7 @@ The dataset used in RetGen fine-tuning can be downloaded here (to be added). Pla
 To fine-tune a model with Google Colab:
 (To be added)
 
-To fine-tune a model with local 12GB GPU (adapted from [RetGen](https://github.com/dreasysnail/RetGen)), run the following command without new line characters.
+To fine-tune a model with local 12GB single-card GPU (adapted from [RetGen](https://github.com/dreasysnail/RetGen)), run the following command without new line characters.
 (To be edited)
 ```bash
 python joint_training.py
@@ -88,7 +103,7 @@ python joint_training.py
 
 ### Rasa
 You can add NLU training data in data/nlu.yml.
-You can add dialogue flow training data in data/rules.yml, data/stories.yml.
+You can add dialogue flow training data in data/rules.yml and data/stories.yml.
 Do not forget to update domain.yml with the intent and action labels.
 You can edit the model parameters such as max_ngram, max_history and epochs in Rasa/config.yml.
 To train a new model after modifying the .yml files:
