@@ -33,14 +33,17 @@ The trained model for Rasa can be found in Rasa/models.
 To chat with the two models jointly, open 3 terminals.
 In terminal 1:
 ```bash
+cd Rasa
 rasa run actions
 ```
 In terminal 2:
 ```bash
+cd Rasa
 rasa run --enable-api
 ```
 In terminal 3:
 ```bash
+cd RetGen/dialogpt
 python joint_chatbot.py --model_name_or_path "./models/RetGen/" --load_checkpoint "./models/RetGen/reddit_generator.pkl" --max_history -2 --top_k 500 --generation_length 30
 ```
 These commands will deploy the rasa chatbot and action servers on local endpoints as indicated in Rasa/endpoints.yml, and run the RetGen model in Python. You may chat with the models jointly in terminal 3. The default model is Rasa. Type "chat mode" to switch to RetGen, and "quiz mode" to switch back to Rasa.
@@ -55,10 +58,12 @@ python chatbot.py --model_name_or_path "./models/RetGen/" --load_checkpoint "./m
 To chat with the Rasa model, open two terminals.
 In terminal 1:
 ```bash
+cd Rasa
 rasa run actions
 ```
 In terminal 2:
 ```bash
+cd Rasa
 rasa shell
 ```
 You may then chat with the Rasa model in terminal 2.
