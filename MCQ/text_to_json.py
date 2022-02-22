@@ -1,3 +1,5 @@
+# This Python file was written by Qian Ci
+
 import json
 from pathlib import Path
 
