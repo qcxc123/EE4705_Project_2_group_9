@@ -103,19 +103,6 @@ def generate_sequence(model, input_ids, position_ids=None, token_type_ids=None, 
         output = torch.cat((output, prev), dim=1)
     return output
 
-
-def cut_seq_to_eos(sentence, remove_id=[-1]):
-    sent = []
-    for s in sentence:
-        if s in remove_id:
-            continue
-        if s != EOS_ID:
-            sent.append(s)
-        else:
-            break
-    return sent
-
-
 def run_model():
     parser = argparse.ArgumentParser()
     parser.add_argument('--model_name_or_path', type=str, default='',
