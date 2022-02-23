@@ -104,7 +104,6 @@ def run_model():
             history = history[-(2 * args.max_history + 1):]
 
         else:
-            print("Sending message now...")
             # Pass message to rasa and print response
             r = requests.post('http://localhost:5005/webhooks/rest/webhook', json={"message": raw_text})
             for i in r.json():
