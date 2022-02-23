@@ -24,7 +24,7 @@ The version of pytorch installed assumes you have a cuda-compatible GPU.
 
 ## Trained Models
 ### RetGen
-Our fine-tuned model for RetGen can be downloaded from here (to be added). Place these in RetGen/dialogpt/models/RetGen. The model was fine-tuned using the [released RetGen Reddit retriever and generator](https://github.com/dreasysnail/RetGen).
+Our fine-tuned model for RetGen can be downloaded from [here](https://drive.google.com/file/d/1-ySMdWy-GN82H9J2pD9PP1kQoWwaITCU/view?usp=sharing). Place the downloaded file in RetGen/dialogpt/models/RetGen. The model was fine-tuned using the [released RetGen Reddit retriever and generator](https://github.com/dreasysnail/RetGen).
 ### Rasa
 Our trained model for Rasa can be found in Rasa/models.
 
@@ -49,7 +49,7 @@ python joint_chatbot.py --model_name_or_path "./models/RetGen/" --load_checkpoin
 These commands will deploy the rasa chatbot and action servers on local endpoints as indicated in Rasa/endpoints.yml, and run the RetGen model in Python. You may chat with the models jointly in terminal 3. The default model is Rasa. Type "chat mode" to switch to RetGen, and "quiz mode" to switch back to Rasa.
 
 ### RetGen only
-To chat with the RetGen model, use our chatbot.py script which was adapted from [DialoGPT2-Interact](https://github.com/andreamad8/DialoGPT2-Interact).
+To chat with the RetGen model, run the batch file *run.bat*, or use our chatbot.py script which was adapted from [DialoGPT2-Interact](https://github.com/andreamad8/DialoGPT2-Interact).
 ```bash
 cd RetGen/dialogpt
 python chatbot.py --model_name_or_path "./models/RetGen/" --load_checkpoint "./models/RetGen/reddit_generator.pkl" --generation_length 30 --max_history -2 --top_k 1
@@ -78,33 +78,29 @@ The formatted arXiv dataset used in RetGen fine-tuning can be downloaded here (t
 
 ## Train your own models
 ### RetGen
-To fine-tune a model with Google Colab:
-(To be added)
+To fine-tune a model with Google Colab Pro's high RAM (26GB) GPU:
+1. Create a Colab workspace with the notebook.ipynb and two folders "models" and "data".
+2. In the "data" folder, download and place these two files inside: [wiki.txt](https://yizzhang.blob.core.windows.net/gdpt/RetGen_local/data/wiki.txt?sv=2019-10-10&st=2021-10-27T22%3A08%3A54Z&se=2025-10-28T22%3A08%3A00Z&sr=b&sp=r&sig=lfJIG1Is5i6XnWmbbyg3HcjFsL4ssNIfJygzf6OGnwI%3D) (2.5GB), [arxiv_train.tsv](https://drive.google.com/file/d/17RKwIEisJPspZfUsuVoD4Uw9glH2yL3o/view?usp=sharing) (2.17GB)
+3. In the "models" folder, download and place the models you want to evaluate. The model trained in this project can be found under section **"Trained Models"**; the original RetGen checkpoints can be found in their [Github page](https://github.com/dreasysnail/RetGen).
+4. Run the *notebook.ipynb*. Note that the **"Preprocess"** tab need only be run once to generate the train db.
 
-To fine-tune a model with local 12GB single-card GPU (adapted from [RetGen](https://github.com/dreasysnail/RetGen)), run the following command without new line characters.
-(To be edited)
-```bash
-python joint_training.py
-     --model_name_or_path configs
-     --init_checkpoint dialogpt/models/RetGen/reddit_generator.pkl
-     --train_input_file data/reddit_train.db
-     --eval_input_file data/reddit_test.txt 
-     --output_dir output/joint_reddit
-     --file_suffix joint_reddit
-     --train_batch_size 2
-     --gradient_accumulation_steps 2
-     --eval_batch_size 2
-     --num_optim_steps 16000
-     --encoder_model_type ance_roberta
-     --pretrained_model_cfg bert-base-uncased
-     --model_file dialogpt/models/RetGen/reddit_retriever.pkl
-     --ctx_file data/wiki.txt
-     --num_shards 1
-     --batch_size 128
-     --n_docs 2
-     --encoding
-     --load_trained_model
+To fine-tune a model with local single-card GPU (a RAM size of at least 20GB is highly recommended) (adapted from [RetGen](https://github.com/dreasysnail/RetGen)):
+1. Install the apex and fairseq dependencies in your environment.
 ```
+git clone https://github.com/NVIDIA/apex
+cd apex
+pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
+```
+```
+git clone https://github.com/pytorch/fairseq
+cd fairseq
+pip install --editable ./
+```
+2. In the "RetGen/data" folder, download and place these two files inside: [wiki.txt](https://yizzhang.blob.core.windows.net/gdpt/RetGen_local/data/wiki.txt?sv=2019-10-10&st=2021-10-27T22%3A08%3A54Z&se=2025-10-28T22%3A08%3A00Z&sr=b&sp=r&sig=lfJIG1Is5i6XnWmbbyg3HcjFsL4ssNIfJygzf6OGnwI%3D) (2.5GB), [arxiv_train.tsv](https://drive.google.com/file/d/17RKwIEisJPspZfUsuVoD4Uw9glH2yL3o/view?usp=sharing) (2.17GB)
+3. Create a directory "RetGen/models" for any model checkpoints.
+4. When training for the first time, preprocess the train.tsv by running this command. \
+```python dialogpt/prepro.py --corpus data/arxiv_train.tsv --max_seq_len 512```
+5. Run the shell script *run.sh* with updated paths. A *batch_size* of 8 and *num_shards* of 100 if recommended for a lower-end GPU (less than 26GB).
 
 ### Rasa
 You can add NLU training data in data/nlu.yml.
