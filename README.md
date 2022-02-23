@@ -22,7 +22,10 @@ pip install -r requirements.txt
 ```
 The version of pytorch installed assumes you have a cuda-compatible GPU.
 
-## Trained Models
+## Trained Model Links
+### TA provide model
+Our model retrained on filtered subreddit data can be downloaded from [here](https://drive.google.com/file/d/1Wb9qJoua_pZz_nOFsCeEYBPySpN6IMPE/view?usp=sharing).
+
 ### RetGen
 Our fine-tuned model for RetGen can be downloaded from [here](https://drive.google.com/file/d/1-ySMdWy-GN82H9J2pD9PP1kQoWwaITCU/view?usp=sharing). Place the downloaded file in RetGen/dialogpt/models/RetGen. The model was fine-tuned using the [released RetGen Reddit retriever and generator](https://github.com/dreasysnail/RetGen).
 ### Rasa
