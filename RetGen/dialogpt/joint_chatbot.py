@@ -69,7 +69,7 @@ def run_model():
 
     history = []
     chat_mode = False
-    raw_text = ''
+    bot_message = ''
 
     while bot_message != "Hope you've learnt some things today. Bye!":
         raw_text = input("USR >>> ")
