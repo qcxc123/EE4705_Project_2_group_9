@@ -24,9 +24,9 @@ The version of pytorch installed assumes you have a cuda-compatible GPU.
 
 ## Trained Models
 ### RetGen
-The trained models for RetGen can be downloaded from here (to be added). Place these in RetGen/dialogpt/models/RetGen.
+Our fine-tuned model for RetGen can be downloaded from here (to be added). Place these in RetGen/dialogpt/models/RetGen. The model was fine-tuned using the [released RetGen Reddit retriever and generator](https://github.com/dreasysnail/RetGen).
 ### Rasa
-The trained model for Rasa can be found in Rasa/models.
+Our trained model for Rasa can be found in Rasa/models.
 
 ## Chat with models
 ### Joint RetGen and Rasa
@@ -49,7 +49,7 @@ python joint_chatbot.py --model_name_or_path "./models/RetGen/" --load_checkpoin
 These commands will deploy the rasa chatbot and action servers on local endpoints as indicated in Rasa/endpoints.yml, and run the RetGen model in Python. You may chat with the models jointly in terminal 3. The default model is Rasa. Type "chat mode" to switch to RetGen, and "quiz mode" to switch back to Rasa.
 
 ### RetGen only
-To chat with the RetGen model, use the chatbot.py script which was adapted from [DialoGPT2-Interact](https://github.com/andreamad8/DialoGPT2-Interact).
+To chat with the RetGen model, use our chatbot.py script which was adapted from [DialoGPT2-Interact](https://github.com/andreamad8/DialoGPT2-Interact).
 ```bash
 cd RetGen/dialogpt
 python chatbot.py --model_name_or_path "./models/RetGen/" --load_checkpoint "./models/RetGen/reddit_generator.pkl" --generation_length 30 --max_history -2 --top_k 1
@@ -70,7 +70,7 @@ You may then chat with the Rasa model in terminal 2.
 
 ## Datasets
 ### RetGen
-The dataset used in RetGen fine-tuning can be downloaded here (to be added). Place these in RetGen/data.
+The formatted arXiv dataset used in RetGen fine-tuning can be downloaded here (to be added). This was formatted from the raw released arXiv data. Download the Wiki data from the [RetGen repo](https://github.com/dreasysnail/RetGen). Place the datasets in RetGen/data.
 
 ### Rasa
 1. The .yml data used in Rasa training can be found in Rasa/data. Note that the data labels must also be indicated in Rasa/domain.yml.
