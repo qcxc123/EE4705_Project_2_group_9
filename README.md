@@ -1,14 +1,14 @@
 # EE4705 Project 2 Group 9: General Knowledge Education Dialogue Models
 
-This repository was created for a module on Human-Robot Interaction. It contains the source code for three general knowledge education dialogue models created using the TA provided code, [RetGen](https://github.com/dreasysnail/RetGen) and [Rasa](https://github.com/RasaHQ/rasa). The RetGen and Rasa models can be interacted with individually or jointly.
+This repository was created for a module on Human-Robot Interaction. It contains the source code for three general knowledge education dialogue models created using the TA provided RNN code, [RetGen](https://github.com/dreasysnail/RetGen) and [Rasa](https://github.com/RasaHQ/rasa). The RetGen and Rasa models can be interacted with individually or jointly.
 The RetGen model is a knowledge-grounded conversational model jointly trained on multi-turn dialogue and document retrieval.
 The Rasa model is a task-oriented model which generates multiple-choice questions for a variety of subjects, accepts a number as an answer, and keeps track of score.
 It also provides an explanation for the answer when available (for the science dataset).
 The RetGen folder was forked from the RetGen repository and modified. There is no need to clone/fork the Rasa repository as it can be installed as a package.
 
 ## Environment
-### TA model
-To run the TA model, follow the instructions in the EE4705 Project 2 manual. Set up the environment:
+### Retrained RNN model
+To run the retrained RNN model, follow the instructions in the EE4705 Project 2 manual. Set up the environment:
 1. Create a new Pycharm project and set the base interpreter to Python 3.6
 2. Install TensorFlow 1.2.1 via
 ```bash
@@ -79,6 +79,9 @@ rasa shell
 You may then chat with the Rasa model in terminal 2.
 
 ## Datasets
+### Retrained RNN
+The filtered dataset used for training can be found in TA_model/data/reddit.
+
 ### RetGen
 The formatted arXiv dataset used in RetGen fine-tuning can be downloaded [here](https://drive.google.com/file/d/17RKwIEisJPspZfUsuVoD4Uw9glH2yL3o/view?usp=sharing)(2.17GB). This was formatted from the raw released arXiv data. Download the Wiki data from here [wiki.txt](https://yizzhang.blob.core.windows.net/gdpt/RetGen_local/data/wiki.txt?sv=2019-10-10&st=2021-10-27T22%3A08%3A54Z&se=2025-10-28T22%3A08%3A00Z&sr=b&sp=r&sig=lfJIG1Is5i6XnWmbbyg3HcjFsL4ssNIfJygzf6OGnwI%3D) (2.5GB). Place the datasets in RetGen/data. The raw arXiv data and Wiki data were taken from the [RetGen repo](https://github.com/dreasysnail/RetGen). 
 
