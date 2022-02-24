@@ -94,7 +94,7 @@ The formatted arXiv dataset used in RetGen fine-tuning can be downloaded [here](
 
 ### Rasa
 1. The .yml data used in Rasa training can be found in Rasa/data. Note that the data labels must also be indicated in Rasa/domain.yml.
-2. The .json files in Rasa/data are not used in training, but are retrieved using Rasa/actions/actions.py. The science.json was obtained from the [SciQ dataset](https://allenai.org/data/sciq ). The other .json files were generated from [Ni's MCQ dataset](https://www3.cs.stonybrook.edu/~chni/post/mcq-dataset/), using MCQ/text_to_json.py
+2. The .json files in Rasa/data are not used in training, but are retrieved using *Rasa/actions/actions.py*. The science.json was obtained from the [SciQ dataset](https://allenai.org/data/sciq ). The other .json files were generated from [Ni's MCQ dataset](https://www3.cs.stonybrook.edu/~chni/post/mcq-dataset/), using *MCQ/text_to_json.py*.
 
 ## Train your own models
 ### RetGen
