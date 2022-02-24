@@ -87,6 +87,7 @@ To better find out which subreddits to filter, the following scripts were used:
 3. Run the batch file *filter.bat*, which appends all subreddit names to *sub_list.txt*, and also outputs CSV files with the subreddit name and comment count for each input subdirectory.
 4. Run *find_subs.py* to add the filtered subreddits to *filtered_sub_list.txt*, and also prints information on the number of subreddits and comments filtered.
 5. Copy the filtered subreddits into *subreddit_whitelist* in *parser_config_standard.json*.
+6. Run *reddit_parse.py* to generate the output bz2 files for use as training.
 
 ### RetGen
 The formatted arXiv dataset used in RetGen fine-tuning can be downloaded [here](https://drive.google.com/file/d/17RKwIEisJPspZfUsuVoD4Uw9glH2yL3o/view?usp=sharing) (2.17GB). This was formatted from the raw released arXiv data. Download the Wiki data from here [wiki.txt](https://yizzhang.blob.core.windows.net/gdpt/RetGen_local/data/wiki.txt?sv=2019-10-10&st=2021-10-27T22%3A08%3A54Z&se=2025-10-28T22%3A08%3A00Z&sr=b&sp=r&sig=lfJIG1Is5i6XnWmbbyg3HcjFsL4ssNIfJygzf6OGnwI%3D) (2.5GB). Place the datasets in RetGen/data. The raw arXiv data and Wiki data were taken from the [RetGen repo](https://github.com/dreasysnail/RetGen). 
